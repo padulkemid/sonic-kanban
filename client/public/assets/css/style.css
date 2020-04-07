@@ -11,8 +11,14 @@ h1 {
 }
 
 hr {
-  border: 1px dashed black;
+  border: 1px dashed #003162;
   margin: 0 5%;
+}
+
+#user-cell {
+  display: flex;
+  margin: 5%;
+  justify-content: space-between;
 }
 
 .box {
@@ -48,6 +54,20 @@ hr {
 .subtitle {
   font-size: 15px;
   padding: 0 10px;
+}
+
+.button {
+  background-color: #003162;
+  border: none;
+  color: #E4FFFF;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 30px;
+}
+
+.button:hover {
+  background-color: #E4FFFF;
+  color: #003162;
 }
 
 /*# sourceMappingURL=style.css.map */

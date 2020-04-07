@@ -26,9 +26,18 @@ h1 {
 }
 
 hr {
-  border: 1px dashed black;
+  border: 1px dashed $card-background;
   margin: 0 5%;
 }
+
+// ids
+
+#user-cell {
+  display: flex;
+  margin: 5%;
+  justify-content: space-between;
+}
+
 
 // classes
 .box {
@@ -69,5 +78,17 @@ hr {
   padding: 0 10px;
 }
 
+.button {
+  background-color: $card-background;
+  border: none;
+  color: $primary-color;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 30px;
+}
 
+.button:hover {
+  background-color: $primary-color;
+  color: $card-background;
+}
 
