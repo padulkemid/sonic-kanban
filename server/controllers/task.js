@@ -19,13 +19,9 @@ class TaskController {
   }
 
   static read(req, res, next) {
-    const UserId = req.UserId;
     const organization = req.Organization;
 
     Task.findAll({
-      where: {
-        UserId,
-      },
       include: [
         {
           model: User,

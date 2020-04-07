@@ -8,7 +8,6 @@ const authentication = (req, res, next) => {
     if (err) {
       throw new Error('Token not found!');
     } else {
-      res.status(200).json({ status: 200, message: 'User is logged in!' });
       req.Organization = decoded.organization;
       req.UserId = decoded.UserId;
       next();
