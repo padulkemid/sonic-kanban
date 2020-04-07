@@ -1,14 +1,10 @@
 const route = require('express').Router();
-const { User } = require('../models');
+const errorHandler = require('../middlewares/error_handler');
+const Task = require('./task');
+const User = require('./user');
 
-route.get('/', (req, res) => {
-  User.findAll()
-    .then((list) => {
-      res.json(list);
-    })
-    .catch((err) => {
-      res.json({ message: 'error' });
-    });
-});
+route.use(User);
+route.use('/tasks', Task);
+route.use(errorHandler);
 
 module.exports = route;
