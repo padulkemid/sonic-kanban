@@ -9,7 +9,7 @@ $font-color: #2D97C8;
 $card-background : #003162;
 
 // fonts
-$header-font : 'Comic Neue', cursive;
+$header-font : 'Do Hyeon', sans-serif;
 $body-font : 'Rubik', sans-serif;
 
 // selectors
@@ -25,16 +25,27 @@ h1 {
   font-size: 46px;
 }
 
+hr {
+  border: 1px dashed black;
+  margin: 0 5%;
+}
+
 // classes
 .box {
   display: flex;
   background-color: $tertiary-color;
 
+  .cards-title {
+    padding: 0 5px;
+    margin: 2%;
+    font-family: $header-font;
+    font-size: 26px;
+  }
+
   .cards {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     padding: 10px;
     margin: 2%;
     background-color: $card-background;
@@ -49,11 +60,13 @@ h1 {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .subtitle {
-  font-size: 25px;
+  font-size: 15px;
+  padding: 0 10px;
 }
 
 

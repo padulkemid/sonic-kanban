@@ -6,19 +6,29 @@ body {
 
 h1 {
   text-align: center;
-  font-family: "Comic Neue", cursive;
+  font-family: "Do Hyeon", sans-serif;
   font-size: 46px;
+}
+
+hr {
+  border: 1px dashed black;
+  margin: 0 5%;
 }
 
 .box {
   display: flex;
   background-color: #65B6DC;
 }
+.box .cards-title {
+  padding: 0 5px;
+  margin: 2%;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 26px;
+}
 .box .cards {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   padding: 10px;
   margin: 2%;
   background-color: #003162;
@@ -31,11 +41,13 @@ h1 {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .subtitle {
-  font-size: 25px;
+  font-size: 15px;
+  padding: 0 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
