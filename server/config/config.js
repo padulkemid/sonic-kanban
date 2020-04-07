@@ -8,10 +8,10 @@ module.exports = {
     dialect: process.env.DB_DIALECT,
   },
   production: {
-    username: 'root',
-    password: null,
-    database: 'database_production',
-    host: '127.0.0.1',
-    dialect: 'mysql',
+    username: 'dbrbkxzmnplaow',
+    password: 'c031b8a0caf8cd8aea38f34daea574e72ae4e7ade6fef9d13993e9a09d202ee3',
+    database: 'dji6o0e81b5q3',
+    host: 'ec2-50-17-21-170.compute-1.amazonaws.com',
+    dialect: 'postgres',
   },
 };
