@@ -1,0 +1,41 @@
+body {
+  background-color: #147EAF;
+  color: #E4FFFF;
+  font-family: "Rubik", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Comic Neue", cursive;
+  font-size: 46px;
+}
+
+.box {
+  display: flex;
+  background-color: #65B6DC;
+}
+.box .cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 2%;
+  background-color: #003162;
+}
+.box .cards .card {
+  width: 100%;
+  margin: 5% 0;
+  background-color: #B2FFFF;
+  color: #2D97C8;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.subtitle {
+  font-size: 25px;
+}
+
+/*# sourceMappingURL=style.css.map */
