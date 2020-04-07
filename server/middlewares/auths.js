@@ -39,7 +39,6 @@ const authorization = (req, res, next) => {
         throw new Error('Task not found!');
       } else {
         if (req.UserId == task.UserId) {
-          res.status(200).json({ status: 200, message: 'Permission granted!' });
           next();
         } else {
           throw new Error('Access denied!');
