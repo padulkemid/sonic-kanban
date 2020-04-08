@@ -1,30 +1,47 @@
+// base url
+const url = `https://kanbanpadul.herokuapp.com`;
+
 let app = new Vue({
   el: '#app',
   data: {
-    username: 'Padul',
-    title: 'ini',
-    subtitle: 'Berhasil hore-hore!',
-    jumlah: 1,
+    taskLists: null,
     isLoggedIn: false,
   },
-  computed: {
-    jumlah: function () {
-      console.log(jumlah);
-      return jumlah + 2;
-    },
+  created() {
+    this.login();
+    this.retrieveData();
   },
-  watch: {
-    isLoggedIn: function (val, oldVal) {
-      console.log('state sebelumnya: ', oldVal);
-      if (val) {
-        console.log('logged in!');
-      } else {
-        console.log('belum login');
-      }
+  methods: {
+    login() {
+      const data = {
+        email: 'padul@kem.id',
+        password: 'jancok123',
+      };
+
+      postLogin(data)
+        .then((res) => {
+          console.log('Successfully logged in!');
+          this.isLoggedIn = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    title: function (val, oldVal) {
-      console.log(oldVal);
-      console.log(val);
+    retrieveData() {
+      getData()
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    logout() {
+      if (this.isLoggedIn) {
+        localStorage.removeItem('token');
+      } else {
+        console.log('anda belum login!');
+      }
     },
   },
 });
