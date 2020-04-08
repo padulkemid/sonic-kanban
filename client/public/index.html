@@ -14,119 +14,123 @@
 </head>
 <body>
 
-  <!-- top typography -->
-  <h1>Kanban Padul</h1>
+  <div id="app">
+    <!-- top typography -->
+    <h1>Kanban Padul</h1>
 
-  <div id="user-cell">
-    <p class="username title">
-    Welcome, {{ username }} !
-    </p>
-    <button class="button subtitle" type="button">
-      Log out!
-    </button>
-  </div>
-
-  <!-- kanban -->
-  <div class="box">
-
-    <!-- first card -->
-    <div id="first-cell" class="cards">
-      <h2 class="cards-title">
-        Backlog
-      </h2>
-      <div class="card">
-        <p class="title">
-          Layout #1
-        </p>
-        <hr>
-        <p class="subtitle">
-          Subtitle
-        </p>
-      </div>
-      <div class="card">
-        <p class="title">
-          Layout #2
-        </p>
-        <hr>
-        <p class="subtitle">
-          Subtitle
-        </p>
-      </div>
+    <div id="user-cell">
+      <p class="username title">
+      Welcome, {{ username }} !
+      </p>
+      <button class="button subtitle" type="button">
+        Log out!
+      </button>
     </div>
 
-    <!-- second card -->
+    <!-- kanban -->
+    <div v-if="isLoggedIn" class="box">
 
-    <div id="second-cell" class="cards">
-      <h2 class="cards-title">
-        Todo
-      </h2>
-      <div class="card">
-        <p class="title">
-          Layout #1
-        </p>
-        <hr>
-        <p class="subtitle">
-          Subtitle
-        </p>
-      </div>
-      <div class="card">
-        <p class="title">
+      <!-- first card -->
+      <div id="first-cell" class="cards">
+        <h2 class="cards-title">
+          Backlog
+        </h2>
+        <div class="card">
+          <p class="title">
+          {{ title }}
+          </p>
+          <hr>
+          <p class="subtitle">
+          {{ subtitle }}
+          </p>
+        </div>
+        <div class="card">
+          <p class="title">
           Layout #2
-        </p>
-        <hr>
-        <p class="subtitle">
+          </p>
+          <hr>
+          <p class="subtitle">
           Subtitle
-        </p>
+          </p>
+        </div>
       </div>
-      <div class="card">
-        <p class="title">
+
+      <!-- second card -->
+
+      <div id="second-cell" class="cards">
+        <h2 class="cards-title">
+          Todo
+        </h2>
+        <div class="card">
+          <p class="title">
+          Layout #1
+          </p>
+          <hr>
+          <p class="subtitle">
+          Subtitle
+          </p>
+        </div>
+        <div class="card">
+          <p class="title">
+          Layout #2
+          </p>
+          <hr>
+          <p class="subtitle">
+          Subtitle
+          </p>
+        </div>
+        <div class="card">
+          <p class="title">
           Layout #3
-        </p>
-        <hr>
-        <p class="subtitle">
+          </p>
+          <hr>
+          <p class="subtitle">
           Subtitle
-        </p>
+          </p>
 
+        </div>
       </div>
-    </div>
 
-    <!-- third card -->
-    <div id="third-cell" class="cards">
-      <h2 class="cards-title">
-        Done
-      </h2>
-      <div class="card">
-        <p class="title">
+      <!-- third card -->
+      <div id="third-cell" class="cards">
+        <h2 class="cards-title">
+          Done
+        </h2>
+        <div class="card">
+          <p class="title">
           Layout #1
-        </p>
-        <hr>
-        <p class="subtitle">
+          </p>
+          <hr>
+          <p class="subtitle">
           Subtitle
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
 
-    <!-- fourth card -->
-    <div id="third-cell" class="cards">
-      <h2 class="cards-title">
-        Completed
-      </h2>
-      <div class="card">
-        <p class="title">
-        Layout #1
-        </p>
-        <hr>
-        <p class="subtitle">
-        Subtitle
-        </p>
+      <!-- fourth card -->
+      <div id="fourth-cell" class="cards">
+        <h2 class="cards-title">
+          Completed
+        </h2>
+        <div class="card">
+          <p class="title">
+          Layout #1
+          </p>
+          <hr>
+          <p class="subtitle">
+          Subtitle
+          </p>
+        </div>
       </div>
+
+
     </div>
-
-
   </div>
 
   <!-- javascripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/login.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
