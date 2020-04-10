@@ -97,7 +97,30 @@ class UserController {
           );
           res.status(200).json({ status: 200, message: 'Successfully logged in!', token });
         } else {
-          throw new Error('Wrong password!');
+          return User.findOne({
+            where: {
+              email: data.email,
+              organization: 'Hacktiv8',
+            },
+          });
+        }
+      })
+      .then((rebuild) => {
+        const decrypt = decryptPassword(data.password, rebuild.password);
+        return decrypt;
+      })
+      .then((secondDecrypt) => {
+        if (secondDecrypt) {
+          const token = jwt.sign(
+            {
+              UserId: userData.id,
+              organization: userData.organization,
+            },
+            process.env.JWT_SECRET
+          );
+          res.status(200).json({ status: 200, message: 'Successfully logged in!', token });
+        } else {
+          throw new Error('Internal server error!');
         }
       })
       .catch(next);
