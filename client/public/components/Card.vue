@@ -1,11 +1,8 @@
 <template>
-  <div class="tile is-parent">
-    <article class="tile is-child box" :class="classObject(background)">
-      <p class="title">{{ category }}</p>
-      <Data></Data>
-      <Data></Data>
-    </article>
-  </div>
+  <article class="tile is-child box" :class="classObject(background)">
+    <p class="title">{{ category }}</p>
+    <Data @editDataSuccess="rebuildData" @deleteDataSuccess="rebuildData" v-if="filterData.length" v-for="taskItem in filterData" :taskData="taskItem"></Data>
+  </article>
 </template>
 
 <script>
@@ -13,11 +10,31 @@
 
   export default {
     name: 'Card',
-    props: ['category', 'background'],
+    props: ['category', 'background', 'task'],
     components: {
       Data
     },
+    computed: {
+      filterData(){
+        let tempFiltered = []
+        for (let i = 0; i < this.task.length; i++) {
+          if (this.task[i].category == this.category){
+            tempFiltered.push(this.task[i])
+          }
+        }
+
+        return tempFiltered
+      }
+    },
     methods :{
+      rebuildData(payload){
+        if (payload.includes('not found')) {
+          this.$noty.warning(`That's other people tasks!`)
+        } else {
+          this.$noty.warning(payload);
+        }
+        this.$emit('cardDataSuccessEdited', payload)
+      },
       classObject(bg) {
         let styles = [
           { 'has-background-primary' : true },

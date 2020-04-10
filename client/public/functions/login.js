@@ -17,6 +17,7 @@ function loginUser(email, password) {
 function logoutUser(payload) {
   if (payload) {
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     console.log({ status: 200, message: 'Successfully logged out!' });
     return true;
   }

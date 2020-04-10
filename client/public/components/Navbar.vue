@@ -16,7 +16,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <h1 class="subtitle has-text-centered">
-            Hi! {{ username }}
+            Hi! {{ email }}
           </h1>
         </div>
         <div class="navbar-item">
@@ -34,7 +34,7 @@
 <script>
   export default {
     name:'Navbar',
-    props: ['username'],
+    props: ['email'],
     methods : {
       logout() {
         this.$emit('userLogOut', 'logged out!')
