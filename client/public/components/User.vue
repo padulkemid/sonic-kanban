@@ -57,7 +57,6 @@
 
         loginUser(email, password)
           .then(res => {
-
             console.log({status: res.status, message: res.message})
             this.$emit('userLogIn', [res.token, email])
           })
@@ -70,6 +69,7 @@
         registerUser(email, password)
           .then(res => {
             console.log(res)
+            this.$emit('userRegister', res.message)
           })
           .catch(errorHandler)
       }

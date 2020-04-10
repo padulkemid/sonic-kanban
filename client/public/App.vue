@@ -1,7 +1,7 @@
 <template>
   <div>
     <Kanban @userLogOut="userLoggedOut" v-if="isLoggedIn" :emailFromUser="this.email"></Kanban>
-    <User @userLogIn="userLoggedIn" v-else></User>
+    <User @userLogIn="userLoggedIn" @userRegister="userRegistered" v-else></User>
     <Bottom></Bottom>
   </div>
 </template>
@@ -29,6 +29,10 @@
       Kanban
     },
     methods: {
+      userRegistered(payload){
+        this.$noty.success(payload)
+        this.loginCheck()
+      },
       userLoggedOut(payload) {
         if(logoutUser(payload)){
           this.$noty.error('Successfully logged out!')
@@ -40,13 +44,14 @@
       userLoggedIn(payload) {
         // getEmail for user display 
         this.getEmail(payload[1])
-        this.$noty.success(`Welcome! ${payload[1]}`)
-         
+
         // tokensss
         if(checkLoggedInPayload(payload[0])){
+          this.$noty.success(`Welcome! ${payload[1]}`)
           this.loginCheck()
         } else {
           console.log('Token not found!')
+          this.$noty.error('Wrong email/password!')
         }
       },
       loginCheck() {

@@ -89,6 +89,7 @@
           .catch(errorHandler)
       },
       addNewData(){
+        this.showAdd = !this.showAdd
         const title = this.form.title
         const category = this.form.category
 
