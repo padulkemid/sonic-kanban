@@ -4,7 +4,8 @@
       <p>
         <strong>Kanban</strong> by <a target="blank_" @click="redirectGithub">
           Fadhil Muhammad.
-        </a>
+        </a><br>
+          &copy; 2020 padoelkemid, All rights reserved. 😊
       </p>
     </div>
   </footer>
