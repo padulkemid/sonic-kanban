@@ -54,7 +54,7 @@ class UserController {
       .catch(next);
   }
 
-  static async verify(req, res, next) {
+  static async google(req, res, next) {
     const token = req.body.id_token;
     let data = {};
     let userData = null;
