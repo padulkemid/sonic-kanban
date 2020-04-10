@@ -14,6 +14,9 @@ Please use it carefully! 😉
    - _Client_ is hosted on _**Firebase*_ while _Server_ is hosted on _**Heroku**_ 🤯  
    keep an eye for differences between those things
 
+   - CSS is powered by [Bulma](https://bulma.io)!!🚀  
+   please check their documentation for elements inside.
+
    - Happy Coding!
 
 ---
