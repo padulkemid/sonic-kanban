@@ -32,6 +32,13 @@
               <div class="buttons is-centered">
                 <button type="submit" class="button is-primary">Sign In</button>
                 <button type="button" @click="registerUser" class="button is-danger">Register</button>
+                <button
+                  type="button"
+                  @click="forGoogle"
+                  class="button is-info"
+                >
+                  😋 Google
+                </button>
               </div>
             </form>
           </div>
@@ -44,7 +51,7 @@
 </template>
 
 <script>
-  import { loginUser } from '../functions/login.js'
+  import { loginUser, googleLogin } from '../functions/login.js'
   import { registerUser } from '../functions/register.js'
   import { errorHandler } from '../functions/error_handler.js'
 
@@ -70,6 +77,22 @@
           .then(res => {
             console.log(res)
             this.$emit('userRegister', res.message)
+          })
+          .catch(errorHandler)
+      },
+      forGoogle() {
+        let profile = null
+
+        this.$gAuth.signIn()
+          .then(res => {
+            let id_token = res.getAuthResponse().id_token
+            profile = res.getBasicProfile()
+            return googleLogin(id_token)
+          })
+          .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.token)
+            this.$emit('userLogIn', [res.token, profile.yu])
           })
           .catch(errorHandler)
       }

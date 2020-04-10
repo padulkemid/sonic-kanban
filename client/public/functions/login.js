@@ -40,4 +40,18 @@ function loginRenderCheck() {
   }
 }
 
-export { loginUser, logoutUser, checkLoggedInPayload, loginRenderCheck };
+function googleLogin(authCode) {
+  const googleUrl = 'https://kanbanpadul.herokuapp.com/google';
+  const data = {
+    id_token: authCode,
+  };
+  return fetch(googleUrl, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}
+
+export { loginUser, logoutUser, checkLoggedInPayload, loginRenderCheck, googleLogin };

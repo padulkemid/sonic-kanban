@@ -90,8 +90,8 @@ class UserController {
         if (decrypted) {
           const token = jwt.sign(
             {
-              UserId: data.id,
-              organization: 'Hacktiv8',
+              UserId: userData.id,
+              organization: userData.organization,
             },
             process.env.JWT_SECRET
           );

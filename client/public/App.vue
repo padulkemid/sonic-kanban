@@ -35,8 +35,11 @@
       },
       userLoggedOut(payload) {
         if(logoutUser(payload)){
-          this.$noty.error('Successfully logged out!')
-          this.loginCheck()
+          this.$gAuth.signOut()
+            .then(() => {
+              this.$noty.error('Successfully logged out!')
+              this.loginCheck()
+            })
         } else {
           console.log('Internal server errrrrror!')
         }
