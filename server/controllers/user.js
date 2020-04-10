@@ -1,6 +1,8 @@
 const { User } = require('../models');
 const { decryptPassword } = require('../helpers/bcrypt');
+const { OAuth2Client } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT);
 
 class UserController {
   static create(req, res, next) {
@@ -47,6 +49,55 @@ class UserController {
           );
 
           res.status(200).json({ status: 200, token, message: 'Successfully logged in!' });
+        }
+      })
+      .catch(next);
+  }
+
+  static async verify(req, res, next) {
+    const token = req.body.id_token;
+    let data = {};
+    let userData = null;
+
+    client
+      .verifyIdToken({
+        idToken: token,
+        audience: process.env.GOOGLE_CLIENT,
+      })
+      .then((res) => {
+        const user = res.getPayload();
+
+        data.email = user['email'];
+        data.password = 'cenahheeh123';
+
+        return User.findOne({
+          where: {
+            email: data.email,
+            organization: 'Hacktiv8',
+          },
+        });
+      })
+      .then((newData) => {
+        userData = newData;
+        if (!newData) {
+          return User.create(data);
+        } else {
+          const decrypt = decryptPassword(data.password, newData.password);
+          return decrypt;
+        }
+      })
+      .then((decrypted) => {
+        if (decrypted) {
+          const token = jwt.sign(
+            {
+              UserId: data.id,
+              organization: 'Hacktiv8',
+            },
+            process.env.JWT_SECRET
+          );
+          res.status(200).json({ status: 200, message: 'Successfully logged in!', token });
+        } else {
+          throw new Error('Wrong password!');
         }
       })
       .catch(next);

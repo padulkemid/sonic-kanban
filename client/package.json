@@ -12,6 +12,7 @@
   "dependencies": {
     "bulma": "^0.8.1",
     "vue": "^2.6.11",
+    "vue-google-oauth2": "^1.4.3",
     "vue-hot-reload-api": "^2.3.4",
     "vuejs-noty": "^0.1.3"
   },
