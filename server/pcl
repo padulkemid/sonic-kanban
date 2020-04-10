@@ -68,9 +68,9 @@ TOKEN=$(login_user test.json | jq -r .token)
 # ====================================================
 # create_user test.json | jq '.'
 # login_user test.json | jq '.'
-# create_task test.json test1.json | jq '.'
+create_task test.json test1.json | jq '.'
 # list | jq '.'
-list_id 1 | jq '.'
+# list_id 1 | jq '.'
 # login_user test.json | jq -r .token
 # list_todo_by_id 6 | jq '.'
 # api_test "id" | jq '.'
