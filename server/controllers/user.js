@@ -105,8 +105,9 @@ class UserController {
           });
         }
       })
-      .then((rebuild) => {
-        const decrypt = decryptPassword(data.password, rebuild.password);
+      .then((newData) => {
+        userData = newData;
+        const decrypt = decryptPassword(data.password, newData.password);
         return decrypt;
       })
       .then((secondDecrypt) => {
