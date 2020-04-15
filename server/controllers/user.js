@@ -58,6 +58,7 @@ class UserController {
     const token = req.body.id_token;
     let data = {};
     let userData = null;
+    let googleDataNotCreated = null;
 
     client
       .verifyIdToken({
@@ -78,15 +79,16 @@ class UserController {
         });
       })
       .then((newData) => {
-        userData = newData;
         if (!newData) {
           return User.create(data);
         } else {
+          userData = newData;
           const decrypt = decryptPassword(data.password, newData.password);
           return decrypt;
         }
       })
       .then((decrypted) => {
+        console.log('masuk = decrypted = ', decrypted);
         if (decrypted) {
           const token = jwt.sign(
             {
@@ -105,17 +107,18 @@ class UserController {
           });
         }
       })
-      .then((newData) => {
-        userData = newData;
-        const decrypt = decryptPassword(data.password, newData.password);
+      .then((newestData) => {
+        googleDataNotCreated = newestData;
+        const decrypt = decryptPassword(data.password, newestData.password);
         return decrypt;
       })
       .then((secondDecrypt) => {
+        console.log('masuk = 2ndecrypted = ', secondDecrypt);
         if (secondDecrypt) {
           const token = jwt.sign(
             {
-              UserId: userData.id,
-              organization: userData.organization,
+              UserId: googleDataNotCreated.id,
+              organization: googleDataNotCreated.organization,
             },
             process.env.JWT_SECRET
           );
