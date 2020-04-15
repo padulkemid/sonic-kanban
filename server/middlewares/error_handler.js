@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-  if (err.name == 'SequelizeValidationError') {
+  if (err.name == 'SequelizeValidationError' || err.name == 'SequelizeUniqueConstraintError') {
     res.status(400).json({ status: 400, message: err.errors[0].message });
   } else if (err.message.includes('password')) {
     res.status(403).json({ status: 403, message: err.message });

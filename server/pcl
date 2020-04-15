@@ -59,16 +59,17 @@ api_test() {
 
 
 # address
-URL="https://kanbanpadul.herokuapp.com"
+# URL="https://kanbanpadul.herokuapp.com"
+URL="http://localhost:3000"
 TOKEN=$(login_user test.json | jq -r .token)
 
 # script
 # I used a file called test.json to send the request
 # by default, it searches for this
 # ====================================================
-# create_user test.json | jq '.'
+create_user test.json | jq '.'
 # login_user test.json | jq '.'
-create_task test.json test1.json | jq '.'
+# create_task test.json test1.json | jq '.'
 # list | jq '.'
 # list_id 1 | jq '.'
 # login_user test.json | jq -r .token
