@@ -88,8 +88,7 @@ class UserController {
         }
       })
       .then((decrypted) => {
-        console.log('masuk = decrypted = ', decrypted);
-        if (decrypted) {
+        if (decrypted == true) {
           const token = jwt.sign(
             {
               UserId: userData.id,
@@ -113,8 +112,7 @@ class UserController {
         return decrypt;
       })
       .then((secondDecrypt) => {
-        console.log('masuk = 2ndecrypted = ', secondDecrypt);
-        if (secondDecrypt) {
+        if (secondDecrypt == true) {
           const token = jwt.sign(
             {
               UserId: googleDataNotCreated.id,
